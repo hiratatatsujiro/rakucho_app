@@ -62,10 +62,10 @@ Things you may want to cover:
 | user               | references | foreign_key: true |
 
 ### Association
-- has_many :comments
+- has_many :comments, dependent: :destroy
 - belongs_to :user
 
-## comments
+## diary_comments
 | Column             | Type       | Options           |
 |--------------------|------------|-------------------|
 | comment            | string     | null: false       |
@@ -83,10 +83,10 @@ Things you may want to cover:
 
 ### Association
 - has_many :users, through :room_user
-- has_many :room_users
-- has_many :messages
+- has_many :room_users, dependent: :destroy
+- has_many :messages, dependent: :destroy
 
-## messagesテーブル
+## chat_messagesテーブル
 | Column    | Type       | Options                        |
 |-----------|------------|--------------------------------|
 | content   | string     |                                |
@@ -111,9 +111,10 @@ Things you may want to cover:
 | Column              | Type       | Options           |
 |---------------------|------------|-------------------|
 | name                | string     | null: false       |
-| introduce           | text       | null: false       |
+| item_introduction   | text       | null: false       |
 | category_id         | integer    | null: false       |
-| size                | integer    | null: false       |
+| grade_id            | integer    | null: false       |
+| size_id             | integer    | null: false       |
 | status_id           | integer    | null: false       |
 | pay_for_shopping_id | integer    | null: false       |
 | delivery_area_id    | integer    | null: false       |
@@ -159,7 +160,7 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- has_many :likes
+- has_many :likes, dependent: :destroy
 - has_many :tags, through :tag_class_communications
 - has_many :tag_class_communications
 
@@ -177,7 +178,7 @@ Things you may want to cover:
 ## tagsテーブル
 | Column              | Type       | Options           |
 |---------------------|------------|-------------------|
-| string              | string     | null: false       |
+| tag_name            | string     | null: false       |
 
 ### Association
 - has_many :class_communications, through :tag_class_communications
@@ -194,17 +195,19 @@ Things you may want to cover:
 - belongs_to :class_communication 
 
 ## timetablesテーブル
-| Column              | Type       | Options           |
-|---------------------|------------|-------------------|
-| first_hour          | integer     | null: false      |
-| second_hour         | integer     | null: false      |
-| third_hour          | integer     | null: false      |
-| fourth_hour         | integer     | null: false      |
-| fifth_hour          | integer     | null: false      |
-| sixth_hour          | integer     | null: false      |
-| homework            | string      | null: false      |
-| preparation         | string      | null: false      |
-| leave_time          | string      | null: false      |
+| Column              | Type        | Options           |
+|---------------------|-------------|-------------------|
+| next_day            | date        | null: false       |
+| first_hour          | integer     | null: false       |
+| second_hour         | integer     | null: false       |
+| third_hour          | integer     | null: false       |
+| fourth_hour         | integer     | null: false       |
+| fifth_hour          | integer     | null: false       |
+| sixth_hour          | integer     | null: false       |
+| homework            | string      | null: false       |
+| preparation         | string      | null: false       |
+| leave_time          | string      | null: false       |
+| user                | references  | foreign_key: true |
 
 ### Association
 - belongs_to :user
