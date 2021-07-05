@@ -34,6 +34,9 @@ Things you may want to cover:
 | first_name         | string  | null: false |
 | last_name_reading  | string  | null: false |
 | first_name_reading | string  | null: false |
+| grade_id           | integer | null: false |
+| classroom_id       | integer | null: false |
+| number_id          | integer | null: false |
 | birthday           | date    | null: false |
 | introduction       | string  | null: false | 
 

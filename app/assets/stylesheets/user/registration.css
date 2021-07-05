@@ -180,3 +180,13 @@
   text-align: right;
   cursor: pointer;
 }
+
+.input-gradeinfo {
+  display: flex;
+  justify-content: space-around;
+}
+
+.grade_class_number_select {
+  height: 48px;
+  width: 20%;
+}
