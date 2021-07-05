@@ -22,6 +22,9 @@ ActiveRecord::Schema.define(version: 2021_07_05_011831) do
     t.string "introduction", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.integer "grade_id", null: false
+    t.integer "classroom_id", null: false
+    t.integer "number_id", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
