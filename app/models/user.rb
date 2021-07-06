@@ -26,4 +26,5 @@ class User < ApplicationRecord
   validates :password,
             format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]/, message: 'is invalid. Include both letters and numbers' }
 
+  mount_uploader :image, ImageUploader
 end
