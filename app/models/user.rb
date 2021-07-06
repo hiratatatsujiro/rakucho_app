@@ -10,6 +10,7 @@ class User < ApplicationRecord
   belongs_to :number
 
   with_options presence: true do
+    validates :image
     validates :nickname
     validates :introduction
     validates :birthday
