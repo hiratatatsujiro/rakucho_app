@@ -179,6 +179,7 @@
   color: #0099e8;
   text-align: right;
   cursor: pointer;
+  display: block;
 }
 
 .input-gradeinfo {
