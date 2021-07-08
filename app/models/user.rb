@@ -20,14 +20,18 @@ class User < ApplicationRecord
       validates :first_name_reading
     end
 
+    with_options numericality: { other_than: 1, message: "can't be blank" } do
+      validates :grade_id
+      validates :classroom_id
+      validates :number_id
+    end
+
     with_options format: { with: /\A[ぁ-んァ-ン一-龥々]+\z/, message: 'is invalid. Input full-width characters.' } do
       validates :last_name
       validates :first_name
     end
   end
-  validates :password, presence: true, on: :create,
-            format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]/, message: 'is invalid. Include both letters and numbers' }
-
+  validates :password, on: :create,length:{minimum:6},format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/, message: "is invalid. Include both letters and numbers"}
   mount_uploader :image, ImageUploader
 
   def update_with_password(params, *options)
@@ -50,4 +54,11 @@ class User < ApplicationRecord
     clean_up_passwords
     result
 end
+
+def password_presence
+  return if password.present?
+
+  errors.add(:base, "")
+end
+
 end
