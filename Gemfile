@@ -65,3 +65,5 @@ gem "active_hash"
 gem 'carrierwave'
 
 gem 'pry-rails'
+
+gem "uglifier" 
